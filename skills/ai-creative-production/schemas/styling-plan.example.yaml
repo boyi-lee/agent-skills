@@ -1,0 +1,40 @@
+job_context:
+  brand_id: <brand-id>
+  sku: <sku-id>
+  model_id: <model-id>
+  channel: web
+
+strategy:
+  target_signal:
+    audience: null
+    insight: null
+  hero_feature: null
+  must_show: []
+  avoid_hiding: []
+
+look_direction:
+  styling_mode: null
+  complementary_items: []
+  scene_direction: null
+  pose_direction: null
+  mood: []
+
+shot_plan:
+  - id: shot-01
+    purpose: null
+    framing: null
+    angle: null
+    must_show: []
+    rationale: null
+
+channel_notes:
+  web: []
+  edm: []
+  line: []
+  ads: []
+
+validation:
+  source_facts_used: []
+  assumptions: []
+  unsupported_claims: []
+  ready_for_generation: false
