@@ -1,0 +1,56 @@
+model_id: model-a
+status: draft
+version: 0.1.0
+
+identity:
+  display_name: Model A
+  type: virtual-brand-model
+  source_reference_policy: inspiration-only
+
+appearance:
+  age_impression: "28-32"
+  face_shape: "TBD after approved reference set"
+  skin_tone: "TBD after approved reference set"
+  hair:
+    length: "TBD"
+    style: "TBD"
+    color: "TBD"
+
+body:
+  height_impression: "TBD"
+  build: "athletic, lean"
+  proportions: "TBD after reference approval"
+  posture: "natural, active"
+
+visual_direction:
+  mood:
+    - clean
+    - modern
+    - athletic
+  suitable_scenes:
+    - urban-running
+    - park
+    - active-lifestyle
+  unsuitable_scenes: []
+
+consistency_rules:
+  must_keep:
+    - approved facial identity
+    - approved body proportion
+    - hair identity unless job explicitly allows variation
+  may_vary:
+    - expression
+    - pose
+    - styling accessories when not conflicting with product
+  reject_if:
+    - identity visibly changes between outputs
+    - body proportion materially changes
+    - result is recognizably identical to a real reference person
+
+assets:
+  references: []
+  approved_base_images: []
+
+review:
+  human_approved: false
+  notes: "Placeholder card. Must be completed before production generation."
