@@ -10,6 +10,7 @@
 2. `SKILL.md`
 3. `docs/SCALE-RULES.md`
 4. `docs/HANDOFF.md`
+5. `docs/GATE-1.md`
 
 不要只看最新對話就重設架構。
 
@@ -100,20 +101,66 @@ Review 分三層：
 
 `2 Models + 5 SKUs + 3 Scenes + 4:5 / 9:16`
 
+---
+
+## Current Build Status — 2026-09-13
+
+### Gate 1 已建立
+
+目前 repo 已具備：
+
+- `schemas/product-asset.example.yaml`
+- `models/model-a/profile.yaml`
+- `scenes/daan-forest-park/scene.yaml`
+- `workflows/ingest_product.py`
+- `workflows/review_gate.py`
+- `workflows/create_job.py`
+- `requirements.txt`
+- `docs/GATE-1.md`
+
+### Gate 1 現在能做什麼
+
+```text
+Landing Page URL
+→ 抓 HTML / JSON-LD / OG / img 可取得的商品資料
+→ 建 brand/SKU folder
+→ 保存原始 HTML、來源 URL、下載圖片
+→ 建 product.yaml + ingestion-report.json
+→ 檢查 Model / Scene / Product 是否 ready
+→ 建立 traceable job
+```
+
+### 尚未完成
+
+- 尚未用真實品牌 Landing Page 做 runtime 驗證
+- 尚未建立 Shopify / 特定品牌 adapter
+- Model A 尚未建立 approved reference images
+- 大安森林公園 Scene 尚未建立 approved reference images
+- 尚未進入圖片試穿 / 合成
+- 尚未建立生成後視覺 QA
+
 ## Next Recommended Build Task
 
-下一個 Agent 應優先做：
+### Gate 1.1: Real Landing Page runtime validation
 
-### Gate 1: Asset schemas + ingestion skeleton
+下一個 Agent 應優先：
 
-完成條件：
+1. 用真實商品 Landing Page 跑 `ingest_product.py`
+2. 檢查商品圖是否抓對、是否混入大量網站 UI 圖片
+3. 若是 Shopify，建立 Shopify-specific adapter
+4. 修正 SKU / variant / color 解析
+5. 補最小測試
 
-- Model profile schema 可讀
-- Scene schema 可讀
-- Job schema 可讀
-- 可輸入一個 Landing Page URL
-- 能建立 brand / SKU 資料夾
-- 能保存抓到的原始圖片與 source URL
-- 暫時不需要先解決最終 AI 穿衣品質
+完成後才進 Gate 2。
 
-先把資料流跑通，再測圖像模型。不要反過來先堆一坨難以維護的生成節點。
+### Gate 2: Model + Product + Scene generation proof
+
+Gate 2 才開始：
+
+- 建立第一個 approved Model reference set
+- 建立第一個 approved Scene reference set
+- 選一個試穿 / 合成 engine
+- 產出第一張 Model A × SKU × 大安森林公園圖片
+- 執行 Product Fidelity / Model Consistency / Creative Quality Review
+
+不要跳過 Gate 1.1 直接堆生成模型。
