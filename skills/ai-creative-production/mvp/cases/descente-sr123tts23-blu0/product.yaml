@@ -1,0 +1,101 @@
+brand_id: descente
+sku: SR123TTS23-BLU0
+status: source-reviewed
+version: 0.1.0
+
+source:
+  landing_page_url: https://descente.tw/products/descente-mens-t-shirts-sr123tts23-blu0
+  source_type: landing-page
+  fetched_at: 2026-09-13
+
+product:
+  name: "UNI [TOUGH Light] Standard Short Sleeve TS 男士 運動上衣"
+  category: "男士運動短袖上衣"
+  gender: men
+  color: "藍色"
+  material:
+    - "Tough Light"
+  sizes:
+    - M
+    - L
+    - XL
+    - 2XL
+  description: "採用 Tough Light 材質，頁面描述具高彈力、吸濕快乾、防紫外線、耐用與舒適等特性。"
+  price: 2480
+  currency: TWD
+
+fit_reference:
+  model_height_cm: 184
+  model_weight_kg: null
+  worn_size: L
+
+claims:
+  verified:
+    - 高彈力
+    - 吸濕快乾
+    - 防紫外線
+    - 耐用
+    - 舒適
+  unsupported_or_unknown: []
+
+visual_features:
+  hero_candidates:
+    - 背面字母印花
+    - 胸前品牌標誌
+    - 運動短袖版型
+    - 領口加固細節
+  logos:
+    - 胸前品牌標誌
+  graphics:
+    - 背面字母印花
+  construction_details:
+    - 聚酯網眼領口加固
+  material_details:
+    - Tough Light
+
+immutable_features:
+  - id: color
+    description: 藍色
+    severity: critical
+  - id: logo
+    description: 胸前品牌標誌位置與外觀不得任意改變
+    severity: critical
+  - id: back_graphic
+    description: 背面字母印花不得遺失、亂碼或改版
+    severity: critical
+  - id: silhouette
+    description: 運動短袖版型需符合商品來源
+    severity: critical
+  - id: collar
+    description: 領口結構與加固細節需合理保留
+    severity: major
+
+presentation_clues:
+  must_show:
+    - 背面字母印花
+    - 胸前品牌標誌
+  recommended_views:
+    - front-half-body
+    - back-three-quarter
+    - full-body-active
+    - collar-detail
+  detail_candidates:
+    - 領口
+    - 胸前品牌標誌
+    - 背面字母印花
+  notes:
+    - "商品頁本身已提供 Model 184cm / L，可作 fit 參考，不代表品牌固定 Model 規格。"
+
+provenance:
+  fields:
+    product.name: landing_page
+    product.color: landing_page
+    claims.verified: landing_page
+    visual_features: landing_page
+    fit_reference: landing_page
+
+review:
+  source_complete: false
+  human_verified: false
+  verified_at: null
+  notes: "需在 runtime ingestion 後補 image classification、checksum、完整 size chart 與人工 source verification。"
