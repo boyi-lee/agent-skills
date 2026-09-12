@@ -1,0 +1,35 @@
+brand_id: <brand-id>
+status: draft
+version: 0.1.0
+
+identity:
+  name: null
+  market: null
+  positioning: null
+
+visual_rules:
+  mood: []
+  photography_direction: []
+  composition_preferences: []
+  forbidden_visuals: []
+
+product_rules:
+  category_priorities: []
+  mandatory_product_fidelity: true
+  forbidden_claims: []
+
+model_strategy:
+  approved_model_ids: []
+  audience_segments: []
+  matching_rules: []
+
+channel_rules:
+  web: {}
+  edm: {}
+  line: {}
+  ads: {}
+
+review:
+  human_approved: false
+  approved_at: null
+  notes: ""
