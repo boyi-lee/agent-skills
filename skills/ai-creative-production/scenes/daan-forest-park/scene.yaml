@@ -1,0 +1,38 @@
+scene_id: daan-forest-park
+status: draft
+version: 0.1.0
+
+display_name: 大安森林公園
+location:
+  city: Taipei
+  country: Taiwan
+  type: public-park
+
+visual_direction:
+  setting: green urban park with open lawn, tree-lined paths, natural daylight
+  mood:
+    - active
+    - clean
+    - natural
+  preferred_light:
+    - morning
+    - late-afternoon
+  avoid:
+    - invented landmark signage
+    - impossible architecture
+    - crowded distracting background
+
+composition:
+  preferred_shots:
+    - full-body walking
+    - full-body light-running
+    - three-quarter standing
+  ratios:
+    - "4:5"
+    - "9:16"
+
+references: []
+
+review:
+  human_approved: false
+  notes: "Scene card only. Add approved reference images before production use."
