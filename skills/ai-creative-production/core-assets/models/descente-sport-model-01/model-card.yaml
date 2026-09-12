@@ -1,114 +1,156 @@
 model_id: descente-sport-model-01
-status: draft
-version: 0.1.0
+alias:
+  candidate: D
+  locked_version: DV1
+status: identity_locked
+version: 1.0.0
 
 identity:
-  display_name: DESCENTE SPORT Model 01
+  display_name: 林梵耘
+  english_name: Naomi Lin
   type: virtual-brand-model
+  brand_scope:
+    - descente-sport
+  nationality: Taiwan
+  region: Taipei, Taiwan
   source_reference_policy: inspiration-only
   source_reference:
     platform: instagram
     handle: du_a_goon
     url: https://www.instagram.com/du_a_goon
-  brand_scope:
-    - descente-sport
-
-reference_status:
-  instagram_direct_crawl_complete: false
-  reason: "Instagram profile page was not fully retrievable in the current environment. Only publicly indexed references were verified."
-  verified_public_signals:
-    - "Publicly indexed content tags @du_a_goon in Red Bull Gym Clash / CrossFit-related content."
-    - "Publicly indexed gym/strength-training content shows interaction from @du_a_goon."
-    - "Public lifestyle/travel imagery credited to @du_a_goon appears in Taiwanese travel media."
-  pending_visual_review:
-    - face
-    - hair
-    - body proportions
-    - posture
-    - skin tone
-    - styling habits
-    - expression range
 
 appearance:
-  age_impression: pending_visual_review
-  face_shape: pending_visual_review
-  skin_tone: pending_visual_review
+  age_impression: 24-30
+  face_shape: elongated-oval
+  facial_direction:
+    - refined-east-asian-features
+    - clean-cool-impression
+    - natural-real-person-look
+  skin_tone: natural-light-to-medium
   hair:
-    length: pending_visual_review
-    style: pending_visual_review
-    color: pending_visual_review
+    length: medium-long-to-long
+    style:
+      - natural-straight
+      - low-ponytail
+      - loose-active-hair
+    color:
+      - dark-brown
+      - black
+  eye_color: dark-brown
+  makeup_direction:
+    - natural
+    - light-base
+    - low-saturation
+    - non-glamorous
 
 body:
-  height_impression: pending_visual_review
-  build: athletic_direction_pending_confirmation
-  proportions: pending_visual_review
-  posture: pending_visual_review
+  height_cm: 168-170
+  build: slim-balanced-athletic
+  proportions: long-line-balanced
+  posture: upright-relaxed
+  measurements:
+    bust:
+      in: 32
+      cm: 81
+    waist:
+      in: 24
+      cm: 61
+    hips:
+      in: 34
+      cm: 86
+  shoe_size:
+    cm: 24-24.5
+    eu: 38-39
+
+visual_positioning:
+  primary_role: outdoor-lifestyle-functional
+  style_keywords:
+    - japanese-literary
+    - modern-minimal
+    - urban-casual
+    - clean-outdoor
+    - cool-natural
+  mood:
+    - calm
+    - clean
+    - natural
+    - believable
+    - premium-casual
+  camera_presence: low-aggression-realistic
+  energy_level: medium
 
 brand_role:
   audience_signal:
-    age_range: adult
+    age_range: 24-35
     style_identity:
-      - performance-lifestyle
-      - athletic-casual
-      - training-oriented
+      - clean-outdoor
+      - modern-athleisure
+      - casual-functional
     lifestyle:
-      - gym-training
-      - active-lifestyle
-      - outdoor-lifestyle
+      - urban-mobility
+      - light-outdoor
+      - travel
+      - daily-active
     category_fit:
-      - training-tops
-      - performance-t-shirts
+      - t-shirt
+      - lightweight-jacket
       - shorts
-      - lightweight-outerwear
-      - lifestyle-sportswear
-    persuasion_role: "讓目標受眾感覺這是可以真正穿去訓練、活動與日常生活的 DESCENTE SPORT 使用者，而不是棚拍假人。"
-  visual_positioning:
-    mood:
-      - capable
-      - natural
-      - energetic
-      - grounded
-    premium_level: premium-sport
-    energy_level: medium-high
+      - pants
+      - lifestyle-shoes
+    persuasion_role: "讓目標受眾產生『這就是我日常可以穿成的樣子』的投射感。"
+  descente_positioning:
+    primary_line: sport-lifestyle
+    secondary_lines:
+      - outdoor-casual
+      - urban-active
 
 usage_rules:
   suitable_categories:
-    - descente-sport
-    - training
-    - running-lifestyle
-    - active-casual
-  unsuitable_categories:
-    - formalwear
-    - luxury-eveningwear
+    - t-shirt
+    - lightweight-outerwear
+    - shorts
+    - pants
+    - lifestyle-shoes
+    - daily-functional-wear
   suitable_scenes:
-    - gym
-    - urban-training
-    - outdoor-active
+    - department-store
+    - urban-street
+    - park
+    - travel
+    - outdoor-walk
     - daily-active-lifestyle
+  unsuitable_categories:
+    - bodybuilding-focused-performance
+    - formalwear
   unsuitable_scenes:
+    - hyper-bodybuilding-gym
     - scene-that-conflicts-with-product-use-case
 
 consistency_rules:
   must_keep:
-    - "A stable fictional identity after final approval."
-    - "Approved body proportion and athletic impression."
-    - "Approved face, hair, skin tone and expression range once visual review is complete."
-    - "DESCENTE SPORT target signal: active, capable, believable."
+    - "Same DV1 facial identity and overall facial proportions."
+    - "Dark brown/black hair family."
+    - "Slim balanced athletic body proportions."
+    - "Height impression around 168-170 cm."
+    - "Natural realistic skin and facial texture; avoid synthetic AI beauty look."
+    - "Cool, clean, low-aggression visual presence."
   may_vary:
     - pose
-    - expression within approved range
-    - hairstyle details within approved range
+    - expression within natural range
+    - hairstyle arrangement
     - scene
     - camera angle
     - product SKU
+    - styling layers
   reject_if:
-    - "Generated person is recognizably the original Instagram account owner."
-    - "Identity drifts between outputs."
-    - "Body shape changes enough to alter garment fit interpretation."
-    - "Model becomes overly editorial and loses DESCENTE SPORT performance credibility."
+    - "Face identity visibly drifts from DV1."
+    - "Body proportions change enough to alter garment fit interpretation."
+    - "Skin becomes plastic, over-smoothed or visibly AI-generated."
+    - "Facial features become exaggerated or influencer-like."
+    - "Model becomes recognizably identical to the original source-reference person."
 
 source_similarity_policy:
-  objective: "Create a new DESCENTE SPORT virtual model inspired by broad visual and lifestyle signals, not a clone of the reference person."
+  objective: "Maintain a distinct fictional DESCENTE SPORT identity while preserving the approved broad visual direction."
   prohibited:
     - direct-face-copy
     - distinctive-identity-copy
@@ -116,17 +158,16 @@ source_similarity_policy:
   review_required: true
 
 assets:
-  references: []
-  approved_base_images: []
-  reference_contact_sheet: null
+  primary_reference_asset_id: dv1-contact-sheet-v1
+  approved_base_images_manifest: approved-base-images/manifest.yaml
+  shot_list: base-image-shot-list.md
 
 review:
-  identity_consistency_ready: false
-  source_reference_similarity_checked: false
-  human_approved: false
-  approved_at: null
-  blockers:
-    - "Need enough visual references to define appearance and body attributes."
-    - "Need first fictionalized candidate set for human selection."
-    - "Need similarity review against source reference before approval."
-  notes: "Draft created from verified public signals only. Do not use for production generation until visual review and human approval are complete."
+  identity_locked: true
+  identity_consistency_ready: true
+  human_approved: true
+  approval_basis: "User explicitly selected and requested DV1 be fixed as the first formal DESCENTE SPORT Model D identity."
+  source_reference_similarity_checked: pending
+  production_ready: false
+  production_blocker: "Must pass first real-SKU outfit test and identity/product fidelity review before production use."
+  notes: "DV1 is the canonical visual identity. Future generations must reference DV1 and must not silently redesign the model."
