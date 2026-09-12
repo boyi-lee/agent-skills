@@ -1,231 +1,228 @@
-# AI Creative Production Skill
+# AI Creative Production System
 
 ## Purpose
 
-建立一套可 scale、可驗證、可交接的 AI 廣告素材生產系統。
+建立一套可 scale、可驗證、可交接的 AI 服飾素材生產系統。
 
-核心使用情境：
+最終用途不是單一廣告平台，而是讓同一個真實 SKU 能安全地產出：
 
-> 指定 `Model` + 指定任意 `Scene` + 貼上商品 Landing Page URL → 系統自動抓取商品資料與圖片 → 將正確商品套用到固定品牌 Model → 生成廣告圖 → 自動 Review → 人工 Final Gate。
+- 官網 / PDP / Lookbook
+- EDM
+- LINE OA / LINE Ads
+- Meta Ads
+- Google Ads / PMax
 
-這個專案的重點不是「讓 AI 畫一件很像的衣服」，而是把 **Model、商品 SKU、Scene** 都當成可重複使用、可自由替換的資產，再由工作流組合。
-
----
-
-## Core Objects
-
-系統只有三個主要資產：
-
-1. **Model**：固定品牌虛擬模特兒，保存樣貌、身形、髮型、氣質、基準圖與一致性規則。
-2. **Brand / SKU**：品牌底下的商品資料，每個 SKU 保存 Landing Page、商品圖、細節圖與不可被改動的商品特徵。
-3. **Scene**：獨立、可替換的場景輸入。可以是真實地點、室內空間、棚拍、城市街道、自然環境，或由文字 / 參考圖定義的任何背景。
-
-最終工作只是：
-
-`Model + SKU + Scene + Output Spec → Generate → Review → Final`
+核心原則：**商品真實性優先於生成自由度。**
 
 ---
 
-## Target Workflow
+## System Concept
+
+這不是一個巨大 Skill，而是一個由共用資產與多個專職 Skill 組成的系統。
 
 ```text
-1. 選 Model
-2. 指定 Scene（可為任何背景 / 地點 / 場景設定）
-3. 貼 Landing Page URL
-4. 自動抓商品名稱 / SKU / 商品圖 / 細節圖
-5. 自動建立 SKU 資料
-6. 套用商品到固定 Model
-7. 依指定 Scene 與尺寸生成
-8. 自動 Review
-   - 商品一致性
-   - Model 一致性
-   - 場景與畫面品質
-9. PASS / CHECK / FAIL
-10. 人工 Final Gate
-11. 合格素材進入 Meta 素材池
+Core Assets
+  Brand / Model / SKU / Scene
+        ↓
+Product Understanding
+        ↓
+Styling Planner
+        ↓
+Image Generator
+        ↓
+Quality Review
+        ↓ PASS only
+┌─────────┬─────────┬─────────┬─────────┐
+Web       EDM       LINE      Ads
+Skill     Skill     Skill     Skill
 ```
+
+### One Source, Many Outputs
+
+SKU、Model、Brand、Scene 都只有一份 canonical source。
+
+不同渠道只能加工已核准素材，不得各自建立另一份商品真相。
+
+> Source 一份，Output 多份。
 
 ---
 
-## Folder Structure
+## Core Assets
+
+### Brand
+保存品牌定位、視覺規範、Target 邏輯與禁止事項。
+
+### Model
+品牌固定虛擬 Model。除了外貌與身形，也承擔 audience signal：讓目標客群看到素材時能產生「這就是我 / 我穿起來可能就是這樣」的投射。
+
+### SKU
+保存 Landing Page、商品圖、細節圖、材質、尺寸、Logo / 圖案 / 剪裁等不可任意更改的 Product Identity。
+
+### Scene
+獨立、可自由替換。可以是真實地點、室內、棚拍、街道、球場、自然環境、參考圖或純文字定義。
+
+任何具體地點都只能是 example，不得寫死成系統預設。
+
+---
+
+## 8 Skills
+
+### 1. `product-understanding`
+回答：**這件商品到底是什麼？**
+
+把 Landing Page / SKU 轉成結構化 Product Asset，保存來源證據並找出不可變商品特徵。
+
+### 2. `styling-planner`
+回答：**這件商品應該怎麼被呈現？**
+
+根據商品、Brand、Model、Target 與用途決定 hero feature、shot、pose、搭配與 scene direction。
+
+### 3. `image-generator`
+回答：**如何把核准的商品、Model、Styling、Scene 生成成圖？**
+
+不得自行改商品身份。
+
+### 4. `quality-review`
+回答：**這張圖能不能進正式渠道？**
+
+Product Fidelity 有 Hard Fail 權限。Logo、顏色、版型、圖案等重大錯誤不能被其他高分抵銷。
+
+### 5. `channel-web`
+把 PASS 素材轉成 PDP / Lookbook / 官網版位。
+
+### 6. `channel-edm`
+把 PASS 素材轉成 EDM hero / product block / supporting visual。
+
+### 7. `channel-line`
+把 PASS 素材轉成 LINE OA / LINE Ads 的手機版位。
+
+### 8. `channel-ads`
+把 PASS 素材轉成 Meta / Google / PMax 等廣告素材變體。
+
+---
+
+## Canonical Workflow
+
+```text
+1. 指定 Brand
+2. 指定 Model（或由 Brand rules 選擇）
+3. 貼 Landing Page URL / SKU
+4. 指定 Scene，或讓 Styling Planner 建議
+5. 指定 Output Channel
+6. Product Understanding
+7. Styling Planner
+8. 建立 Job Manifest
+9. Image Generator
+10. Quality Review
+11. PASS → Channel Skill
+12. Channel Validation
+13. Human Final Gate
+14. Approved Output
+```
+
+詳細見 `workflows/PIPELINE.md`。
+
+---
+
+## Repository Structure
 
 ```text
 ai-creative-production/
 ├── README.md
 ├── SKILL.md
-├── models/                 # 固定品牌 Model 資產
-│   └── <model-id>/
-│       ├── card/
-│       ├── references/
-│       ├── base-images/
-│       └── profile.yaml
-├── brands/                 # 品牌與 SKU 資產
-│   └── <brand-id>/
-│       ├── brand-profile/
-│       └── skus/
-│           └── <sku>/
-│               ├── raw/
-│               ├── clean/
-│               ├── metadata/
-│               └── landing-page/
-├── scenes/                 # 可替換 Scene 資產
-│   └── <scene-id>/
-│       ├── references/
-│       └── scene.yaml
+│
+├── core-assets/
+│   └── README.md
+│
+├── models/                     # 現有 canonical Model assets
+├── brands/                     # 現有 canonical Brand / SKU assets
+├── scenes/                     # 現有 canonical Scene assets
+│
+├── skills/
+│   ├── product-understanding/
+│   ├── styling-planner/
+│   ├── image-generator/
+│   ├── quality-review/
+│   ├── channel-web/
+│   ├── channel-edm/
+│   ├── channel-line/
+│   └── channel-ads/
+│
 ├── workflows/
+│   └── PIPELINE.md
+├── evals/
+│   └── README.md
+├── mvp/
+│   └── cases/
 ├── jobs/
 ├── outputs/
 ├── reviews/
 ├── schemas/
 ├── templates/
 └── docs/
+    ├── BUILD-PLAN.md
+    ├── SCALE-RULES.md
+    └── HANDOFF.md
 ```
 
----
-
-## Model Strategy
-
-Model 不屬於任何單一 SKU。
-
-每個 Model 是獨立品牌資產，可以重複穿數十或數百個 SKU。
-
-可用真人 / Instagram 作為方向參考，但 production 角色必須重新建立成品牌自己的虛擬 Model。
+目前保留舊版 `models/`、`brands/`、`scenes/` 路徑作為 canonical source，避免為了漂亮資料夾而複製資料。後續若正式獨立成新 repo，再做一次有版本紀錄的 migration。
 
 ---
 
-## SKU Strategy
+## Quality Principles
 
-使用者只需要貼商品 Landing Page URL。
-
-系統目標自動完成：
-
-```text
-URL
-→ 抓商品資訊
-→ 抓全部可用商品圖片
-→ 判斷正面 / 背面 / 細節 / 材質
-→ 建 SKU 資料夾
-→ 建商品 metadata
-→ 送入生成流程
-```
-
-商品是不可任意重畫的核心資產。Logo、顏色、版型、領口、袖型、拼接、圖案等關鍵特徵若有明顯錯誤，不可直接通過 Review。
+1. 商品來源只有一份。
+2. 原始商品資料不可被生成結果覆蓋。
+3. Channel Skill 不可修改 Product Identity。
+4. Model identity 必須可重複使用且可驗證。
+5. Scene 可任意替換，不應影響 SKU / Model 定義。
+6. 每次生成都是可追蹤 job。
+7. 每張正式素材必須經 Quality Review。
+8. 商品重大錯誤直接 FAIL。
+9. 所有 Channel 都要有自己的輸出規格驗證。
+10. 真實 production failure 必須回寫成 rule / eval / regression case。
 
 ---
 
-## Scene Strategy
+## Build Plan
 
-Scene 與 Model、SKU 完全分離，且 **不設固定預設場景**。
+完整建立分為 6 步：
 
-Scene 可以來自：
+1. Repository Foundation
+2. Core Asset Contracts
+3. Skill Contracts
+4. Workflow Orchestration
+5. Eval / Review System
+6. Real MVP Test
 
-- 文字描述
-- 真實地點名稱
-- 使用者提供的參考圖片
-- 已核准的品牌場景模板
-- 既有 Scene Card
-
-例如今天可以是公園，下一次可以是健身房、球場、街道、辦公室、棚拍或任何其他背景。
-
-Scene 的責任只描述：
-
-- 背景 / 地點
-- 時間
-- 光線
-- 天氣（如適用）
-- 畫面氣氛
-- 構圖限制
-- 必須保留 / 不可出現的場景特徵
-
-新增或替換 Scene 不應修改 Model、SKU 或核心工作流。
+詳見 `docs/BUILD-PLAN.md`。
 
 ---
 
-## Review Gate
+## Current MVP
 
-每張圖至少過三關：
+第一個真實 case：
 
-### 1. Product Review
-- 顏色
-- Logo
-- 版型
-- 領口 / 袖口 / 褲型
-- 拼接與商品細節
-- 是否與 Landing Page 一致
+`mvp/cases/descente-sr123tts23-blu0/`
 
-### 2. Model Review
-- 臉是否還是指定 Model
-- 身形是否一致
-- 髮型與主要身份特徵是否漂移
-- 是否出現人體異常
+先驗證：
 
-### 3. Creative / Scene Review
-- 是否符合本次指定 Scene
-- 光影是否自然
-- 構圖是否適合廣告
-- 是否符合指定尺寸
+`Landing Page → Product Understanding → Styling Planner → Job / Review-ready package`
 
-結果只允許：`PASS` / `CHECK` / `FAIL`。
+第一個 output channel 採 `channel-web`，因為官網最能檢驗商品穿著是否可信、細節是否足以支援購買決策。Web baseline 通過後，再延伸到 EDM、LINE、Meta 與 Google。
 
-任何重大商品錯誤應直接 `FAIL`。
+正式 Image Generation 前仍需一張已核准的品牌 Model Card。
 
 ---
 
-## Scale Principles
+## Handoff Rule
 
-1. **Model、SKU、Scene 分離**，避免重複資料。
-2. 所有資產使用固定 ID。
-3. 原始資料永遠保留，生成資料不可覆蓋 source。
-4. 每次生成都是一個 `job`。
-5. 所有自動化都必須能被人工 Final Gate 擋下。
-6. 新品牌只能新增 brand config，不應重寫 workflow。
-7. 新 Model 只能新增 Model Card。
-8. 新 Scene 只能新增 / 指定 Scene Card，不應修改 Model 或 SKU。
-9. 任何範例 Scene 都只是 example，不得被實作成系統預設值。
+任何 ChatGPT、Codex 或其他 Agent 接手前至少先讀：
 
-詳細規範見 `docs/SCALE-RULES.md`。
+1. `README.md`
+2. `docs/BUILD-PLAN.md`
+3. `workflows/PIPELINE.md`
+4. 本次會用到的 `skills/<skill-name>/SKILL.md`
+5. 對應 MVP / job 文件
 
----
-
-## MVP
-
-- 2 個固定 Model
-- 1 個品牌
-- 5 個 SKU
-- 至少 3 個可替換 Scene 測試
-- 2 種尺寸：4:5、9:16
-- URL 自動抓商品
-- 自動生成
-- 自動 Review
-- 人工 Final Gate
-
-成功定義：
-
-> 使用者只需要指定 Model、任意 Scene、Landing Page URL 與輸出尺寸，大部分流程能自動完成；人只負責最後確認。
-
----
-
-## Generic Example Request
-
-```yaml
-model: model-a
-scene: <any-scene-id-or-scene-spec>
-brand: <brand-id>
-landing_page_url: https://example.com/product
-output:
-  ratios:
-    - 4:5
-    - 9:16
-```
-
-預期結果：
-
-> 指定 Model 穿著 Landing Page 中正確商品，出現在本次指定 Scene 中，商品外觀與原頁面高度一致，並產出可供 Meta 廣告 Review 的素材。
-
----
-
-## Current Status
-
-已完成：問題定義、系統邏輯、資料夾架構、Model / Brand / SKU / Scene 分離原則、Review Gate、Scale 原則、Gate 1 ingestion 骨架。
-
-下一階段：先讓 `1 Model + 1 SKU + 1 任意 Scene` 從 URL 一路跑到 Review，再擴張。
+不得只靠聊天上下文重新發明架構。
