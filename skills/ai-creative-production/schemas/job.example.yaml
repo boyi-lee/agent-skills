@@ -1,0 +1,29 @@
+job_id: 20260913-descente-sku-model-a-daan
+status: draft
+workflow_version: 0.1.0
+
+inputs:
+  model_id: model-a
+  scene_id: daan-forest-park
+  brand_id: descente
+  landing_page_url: https://example.com/product
+  sku: null
+
+output:
+  ratios:
+    - "4:5"
+    - "9:16"
+  candidate_count_per_ratio: 4
+
+trace:
+  model_version: null
+  scene_version: null
+  product_asset_version: null
+  created_at: null
+
+review:
+  product_fidelity: pending
+  model_consistency: pending
+  creative_quality: pending
+  decision: pending
+  human_final_gate: pending
