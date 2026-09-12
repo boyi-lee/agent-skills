@@ -1,0 +1,24 @@
+scene_id: daan-forest-park
+status: draft
+version: 0.1.0
+
+display_name: 大安森林公園
+location_type: outdoor-park
+
+visual:
+  environment: "TBD"
+  time_of_day: "TBD"
+  lighting: "TBD"
+  weather: "TBD"
+  camera_style: "TBD"
+
+composition:
+  preferred_shots: []
+  avoid: []
+
+assets:
+  references: []
+
+review:
+  must_match: []
+  reject_if: []
