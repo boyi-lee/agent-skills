@@ -1,0 +1,33 @@
+brand_id: descente
+sku: SR323DTS71-BLU0
+status: draft
+version: 0.1.0
+
+source:
+  landing_page_url: https://example.com/product
+  fetched_at: null
+
+product:
+  name: null
+  color: null
+  category: null
+  description: null
+
+images:
+  - source_url: https://example.com/image.jpg
+    local_path: raw/image-001.jpg
+    role: unknown
+    checksum: null
+
+immutable_features:
+  - logo
+  - color
+  - silhouette
+  - collar
+  - sleeve_or_leg_shape
+  - graphic_or_panel_details
+
+review:
+  source_complete: false
+  human_verified: false
+  notes: ""
