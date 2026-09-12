@@ -1,9 +1,14 @@
-scene_id: daan-forest-park
+scene_id: <scene-id>
 status: draft
 version: 0.1.0
 
-display_name: 大安森林公園
-location_type: outdoor-park
+display_name: "<scene display name>"
+scene_type: "<outdoor|indoor|studio|location|abstract>"
+
+source:
+  mode: "<prompt|reference-images|real-location|generated-base>"
+  location_name: null
+  source_urls: []
 
 visual:
   environment: "TBD"
@@ -11,6 +16,7 @@ visual:
   lighting: "TBD"
   weather: "TBD"
   camera_style: "TBD"
+  mood: "TBD"
 
 composition:
   preferred_shots: []
@@ -18,7 +24,13 @@ composition:
 
 assets:
   references: []
+  approved_base_images: []
+
+consistency_rules:
+  must_keep: []
+  may_vary: []
+  reject_if: []
 
 review:
-  must_match: []
-  reject_if: []
+  human_approved: false
+  notes: ""
