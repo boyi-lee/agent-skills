@@ -1,29 +1,43 @@
-model_id: model-a
+model_id: <model-id>
 status: draft
-version: 0.1.0
+version: 0.2.0
 
 identity:
-  display_name: Model A
+  display_name: null
   type: virtual-brand-model
   source_reference_policy: inspiration-only
+  brand_scope: []
 
 appearance:
-  age_impression: "28-32"
-  face_shape: "TBD"
-  skin_tone: "TBD"
+  age_impression: null
+  face_shape: null
+  skin_tone: null
   hair:
-    length: "TBD"
-    style: "TBD"
-    color: "TBD"
+    length: null
+    style: null
+    color: null
 
 body:
-  height_impression: "TBD"
-  build: "TBD"
-  proportions: "TBD"
-  posture: "TBD"
+  height_impression: null
+  build: null
+  proportions: null
+  posture: null
 
-visual_direction:
-  mood: []
+brand_role:
+  audience_signal:
+    age_range: null
+    style_identity: []
+    lifestyle: []
+    category_fit: []
+    persuasion_role: null
+  visual_positioning:
+    mood: []
+    premium_level: null
+    energy_level: null
+
+usage_rules:
+  suitable_categories: []
+  unsuitable_categories: []
   suitable_scenes: []
   unsuitable_scenes: []
 
@@ -35,7 +49,11 @@ consistency_rules:
 assets:
   references: []
   approved_base_images: []
+  reference_contact_sheet: null
 
 review:
+  identity_consistency_ready: false
+  source_reference_similarity_checked: false
   human_approved: false
+  approved_at: null
   notes: ""
