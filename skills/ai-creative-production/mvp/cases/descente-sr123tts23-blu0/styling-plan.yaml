@@ -1,0 +1,88 @@
+job_context:
+  brand_id: descente
+  sku: SR123TTS23-BLU0
+  model_id: PENDING_APPROVED_MODEL
+  channel: web
+
+strategy:
+  target_signal:
+    audience: "待 Brand Profile 與 approved Model Card 決定"
+    insight: "Model 應讓目標客群能投射實際穿著效果，而不是隨機選擇人物。"
+  hero_feature: "背面字母印花 + 整體運動短袖 fit"
+  must_show:
+    - 背面字母印花
+    - 胸前品牌標誌
+    - 短袖版型
+  avoid_hiding:
+    - 背面印花不可全部被姿勢或外搭遮住
+    - 胸前品牌標誌至少需有一個 shot 清楚可見
+
+look_direction:
+  styling_mode: "sport-lifestyle product-led"
+  complementary_items:
+    - "簡潔運動 / 休閒下身，避免搶走上衣主體"
+  scene_direction: "由 Brand / Target 決定；可替換，不綁定單一地點"
+  pose_direction: "自然站姿與輕動態並用，確保正面 / 背面商品資訊都有呈現"
+  mood:
+    - clean
+    - active
+    - believable
+
+shot_plan:
+  - id: shot-01
+    purpose: "讓消費者理解整體穿著比例"
+    framing: full-body
+    angle: front-or-three-quarter
+    must_show:
+      - silhouette
+      - sleeve length
+    rationale: "官網需要先回答實際穿起來的整體感。"
+
+  - id: shot-02
+    purpose: "呈現商品最有辨識度的背面元素"
+    framing: half-or-three-quarter-body
+    angle: back-three-quarter
+    must_show:
+      - back_graphic
+    rationale: "商品頁明確描述背面字母印花，因此不能只產正面照。"
+
+  - id: shot-03
+    purpose: "確認品牌標誌與前身細節"
+    framing: half-body
+    angle: front
+    must_show:
+      - logo
+      - collar
+    rationale: "提供 PDP / Lookbook 中較接近購買檢查需求的視角。"
+
+  - id: shot-04
+    purpose: "補足商品細節理解"
+    framing: detail
+    angle: collar-and-chest
+    must_show:
+      - collar
+      - logo
+    rationale: "讓商品細節不只依賴遠距離穿搭照。"
+
+channel_notes:
+  web:
+    - "先建立 full-body + back feature + detail 三層資訊。"
+    - "可作 PDP / Lookbook baseline。"
+  edm:
+    - "待 Web baseline PASS 後再延伸主視覺。"
+  line:
+    - "待 Web baseline PASS 後再依手機版位裁切。"
+  ads:
+    - "待 Web baseline PASS 後，再拆 Persona / Message Signal，而不是只做裁切變體。"
+
+validation:
+  source_facts_used:
+    - 背面字母印花
+    - 胸前品牌標誌
+    - 領口加固
+    - 男性商品頁 Model 184cm / L
+  assumptions:
+    - "sport-lifestyle 為呈現建議，不是商品頁宣稱。"
+    - "Target 尚未鎖定，必須由 Brand Profile + Model Card 決定。"
+  unsupported_claims: []
+  ready_for_generation: false
