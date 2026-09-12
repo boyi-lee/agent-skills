@@ -1,149 +1,93 @@
 ---
 name: ai-creative-production
-description: 將固定品牌 Model、品牌 SKU 與場景組合成可驗證的 Meta 廣告素材生產工作流。用於從 Landing Page URL 自動建立商品資產、生成穿著圖、場景圖與 Review Gate。
+description: Orchestrate modular AI fashion creative production from landing page / SKU to verified multi-channel assets for Web, EDM, LINE, Meta Ads and Google Ads.
 ---
 
-# AI Creative Production
+# AI Creative Production Orchestrator
 
-## Outcome
+## Purpose
 
-給定：
+本檔案是系統總控，不取代任何子 Skill。
 
-- 一個既有 Model ID
-- 一個 Scene ID
-- 一個商品 Landing Page URL
-- 一組輸出尺寸
+總控責任只有三件事：
+1. 決定流程順序
+2. 傳遞正確資產與狀態
+3. 阻止未通過 Review 的素材進入正式 Channel
 
-產出：
-
-- 已建立 / 更新的 SKU 資料
-- 生成候選圖
-- Review 報告
-- PASS / CHECK / FAIL 狀態
-- 可供人工 Final Gate 的素材
-
-## Non-negotiable Rules
-
-1. 不可把 Model、SKU、Scene 混成同一份不可拆資料。
-2. 不可覆蓋原始商品圖。
-3. 不可把「看起來差不多」當作商品一致性通過。
-4. Logo、顏色、版型、關鍵剪裁明顯錯誤時必須 FAIL。
-5. Model 身份若明顯漂移，必須 CHECK 或 FAIL。
-6. 自動 Review 不能取代人工 Final Gate。
-7. 每次生成必須建立可追蹤的 job 記錄。
-8. 若來源商品圖不足，必須標記資料不足，不可幻想缺失細節。
-
-## Required Inputs
+## Inputs
 
 ```yaml
-model: <model-id>
-scene: <scene-id>
+brand_id: <brand-id>
+model_id: <approved-model-id>
 landing_page_url: <url>
-output:
-  ratios: ["4:5", "9:16"]
+scene: <scene-id-or-spec>
+channels:
+  - web
+  - edm
+  - line
+  - ads
 ```
 
-## Workflow
+`scene` 可由使用者指定，也可先交由 Styling Planner 建議。
 
-### Step 1: Resolve Model
-讀取 `models/<model-id>/profile.yaml` 與基準圖。
+## Canonical Flow
 
-驗證：Model 必須存在且狀態為 approved。
+```text
+Product Understanding
+→ Styling Planner
+→ Job Manifest
+→ Image Generator
+→ Quality Review
+→ PASS only
+→ Channel Skill(s)
+→ Channel Validation
+→ Human Final Gate
+```
 
-### Step 2: Resolve Scene
-讀取 `scenes/<scene-id>/scene.yaml` 與參考圖。
+## Skill Routing
 
-驗證：Scene 必須存在。
+- 商品事實：`skills/product-understanding/SKILL.md`
+- 穿搭 / 呈現策略：`skills/styling-planner/SKILL.md`
+- 生圖：`skills/image-generator/SKILL.md`
+- 商用品質審核：`skills/quality-review/SKILL.md`
+- 官網：`skills/channel-web/SKILL.md`
+- EDM：`skills/channel-edm/SKILL.md`
+- LINE：`skills/channel-line/SKILL.md`
+- Meta / Google Ads：`skills/channel-ads/SKILL.md`
 
-### Step 3: Ingest Landing Page
-建立或更新：
+## Non-Negotiable Rules
 
-`brands/<brand-id>/skus/<sku>/`
-
-至少保存：
-
-- 原始 URL
-- 商品名稱
-- SKU
-- 商品圖片
-- 圖片來源
-- 關鍵不可變商品特徵
-
-### Step 4: Normalize Product Assets
-將抓到的圖片分類為：
-
-- front
-- back
-- side
-- detail
-- material
-- logo / graphic
-
-不可確定的圖片必須標記 unknown，不可硬猜。
-
-### Step 5: Create Job
-建立 `jobs/<job-id>/job.yaml`，記錄：
-
-- model_id
-- scene_id
-- brand_id
-- sku
-- landing_page_url
-- output spec
-- input asset version
-- workflow version
-
-### Step 6: Generate
-目標流程：
-
-`Model + Product + Scene → Candidate Images`
-
-生成時商品身份優先於畫面創意。
-
-### Step 7: Review
-依 `templates/review-checklist.md` 進行三層檢查：
-
-1. Product fidelity
-2. Model consistency
-3. Creative quality
-
-### Step 8: Decide
-
-- PASS → `outputs/<job-id>/approved/`
-- CHECK → 保留於 candidates，等待人工確認
-- FAIL → `outputs/<job-id>/rejected/`
-
-### Step 9: Final Gate
-只有人工核准後，素材才能被標記為 production-ready。
+1. SKU、Model、Brand、Scene 都只有一份 canonical source。
+2. Source 一份，Output 多份。
+3. Channel Skill 不得改 Product Identity。
+4. 原始商品資料不可被生成結果覆蓋。
+5. Product Fidelity 重大錯誤直接 FAIL。
+6. Model 必須是 approved asset 才能產出 production evidence。
+7. Styling recommendation 不可覆寫商品事實。
+8. 每次 production run 都要有 job_id 與 provenance。
+9. CHECK 必須人工處理；FAIL 不得往下流。
+10. 真實 production failure 要回寫 rule / schema / eval。
 
 ## Stop Rules
 
-遇到以下情況停止自動往下：
-
-- Landing Page 無法取得商品圖
-- SKU 無法辨識且可能混入多商品
-- 商品關鍵細節來源不足
-- Model profile 不完整
-- Review 發現關鍵商品錯誤
-
-## MVP Build Order
-
-1. 資料格式與資料夾
-2. Landing Page ingestion
-3. 1 Model 建檔
-4. 1 Scene 建檔
-5. 1 SKU 端到端生成
-6. Review Gate
-7. 擴至 5 SKU
-8. 擴至 2 Models / 3 Scenes
+立即停止往下流若：
+- 商品來源不足或 SKU 不明確
+- approved Model Card 不存在
+- Product Asset 未完成
+- Styling Plan 含未被來源支持的商品宣稱
+- Quality Review = CHECK / FAIL
+- Channel 輸出缺少必要規格
 
 ## Definition of Done
 
-一個 job 完成必須具備：
+一個 production job 完成必須包含：
+- canonical input assets
+- product.yaml
+- styling-plan.yaml
+- job manifest
+- generated candidates
+- quality review result
+- channel output manifest
+- human final gate status
 
-- 可追溯的輸入
-- 可重跑的設定
-- 生成輸出
-- Review 結果
-- Final Gate 狀態
-- 未修改 source assets
+詳細架構讀 `README.md`、`docs/BUILD-PLAN.md`、`workflows/PIPELINE.md`。
