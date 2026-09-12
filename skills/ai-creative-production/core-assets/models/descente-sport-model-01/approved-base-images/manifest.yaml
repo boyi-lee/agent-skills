@@ -1,0 +1,49 @@
+asset_set_id: dv1-contact-sheet-v1
+model_id: descente-sport-model-01
+alias: Model D / DV1
+status: approved-reference
+version: 1.0.0
+
+canonical_source:
+  type: generated-contact-sheet
+  filename: descente運動模特兒娜美林人體藝術誌.png
+  generation_id: 43eeff8f-6d37-42af-8426-f87ac1180216
+  dimensions: 1122x1402
+  approved_by_user: true
+
+views:
+  - id: front-portrait
+    role: identity-reference
+  - id: three-quarter-portrait
+    role: identity-reference
+  - id: full-body
+    role: body-proportion-reference
+  - id: side-profile
+    role: identity-reference
+  - id: outdoor-standing
+    role: lifestyle-reference
+  - id: outdoor-seated
+    role: lifestyle-reference
+
+usage:
+  canonical_identity_reference: true
+  use_for_generation: true
+  use_for_identity_review: true
+  use_for_body_proportion_review: true
+  direct_channel_output: false
+
+lock_rules:
+  - face identity must remain DV1
+  - body proportion family must remain DV1
+  - natural realistic skin texture
+  - no silent redesign of facial features
+  - no major height/build drift
+
+repository_asset_status:
+  binary_image_synced: false
+  reason: "Current GitHub connector supports text-file writes but not direct binary image upload through the available action set. Manifest preserves the exact approved source filename and generation ID until binary sync is available."
+
+next_gate:
+  name: first-real-sku-test
+  required: true
+  production_ready_before_gate: false
