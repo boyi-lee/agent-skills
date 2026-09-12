@@ -1,0 +1,49 @@
+brand_id: <brand-id>
+sku: <sku-id>
+status: draft
+version: 0.1.0
+
+usp_priority:
+  - id: usp-01
+    statement: null
+    evidence_level: verified_fact # verified_fact | visual_inference | creative_hypothesis
+    source: null
+    priority: 1
+    customer_value: null
+
+visual_proof_points:
+  - usp_id: usp-01
+    proof_goal: null
+    shot_types: []
+    framing: []
+    movement: []
+    scene_requirements: []
+    must_show: []
+    must_not_hide: []
+
+immutable_product_details: []
+
+shot_objectives:
+  - id: shot-01
+    purpose: null
+    usp_to_show: []
+    proof_type: hero # hero | movement | fit | detail | lifestyle | footwear-detail | material-detail
+    framing: null
+    angle: null
+    action: null
+    scene_logic: null
+    must_show: []
+    avoid: []
+
+staff_style_rules:
+  use_fixed_template: false
+  minimum_composition_difference_from_previous_set: 0.60
+  prefer_candid_behavior: true
+  avoid_campaign_pose: true
+
+validation:
+  source_facts_used: []
+  unsupported_claims: []
+  visual_lock_complete: false
+  usp_evidence_complete: false
+  ready_for_styling: false
