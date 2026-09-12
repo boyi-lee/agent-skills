@@ -1,0 +1,41 @@
+model_id: model-a
+status: draft
+version: 0.1.0
+
+identity:
+  display_name: Model A
+  type: virtual-brand-model
+  source_reference_policy: inspiration-only
+
+appearance:
+  age_impression: "28-32"
+  face_shape: "TBD"
+  skin_tone: "TBD"
+  hair:
+    length: "TBD"
+    style: "TBD"
+    color: "TBD"
+
+body:
+  height_impression: "TBD"
+  build: "TBD"
+  proportions: "TBD"
+  posture: "TBD"
+
+visual_direction:
+  mood: []
+  suitable_scenes: []
+  unsuitable_scenes: []
+
+consistency_rules:
+  must_keep: []
+  may_vary: []
+  reject_if: []
+
+assets:
+  references: []
+  approved_base_images: []
+
+review:
+  human_approved: false
+  notes: ""
