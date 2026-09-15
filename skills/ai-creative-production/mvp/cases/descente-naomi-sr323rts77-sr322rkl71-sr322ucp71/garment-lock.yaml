@@ -1,0 +1,96 @@
+case_id: descente-naomi-sr323rts77-sr322rkl71-sr322ucp71
+garment_lock_version: 1
+status: active
+principle: "Garments are reference-constrained assets. Do not redraw or redesign them from text prompts."
+
+products:
+  SR323RTS77-BEG0:
+    type: short_sleeve_performance_tee
+    color: light_beige
+    silhouette: regular_fit
+    immutable:
+      front:
+        - red DESCENTE wordmark at wearer-left chest
+        - black Descente arrow logo near wearer-right shoulder
+      back:
+        - small circular segmented mark near upper shoulder
+        - vertical segmented mark at lower back
+      construction:
+        - crew neck
+        - short sleeves
+        - straight regular-fit hem
+        - fine technical micro-mesh / air-hole texture
+    hard_fail:
+      - wordmark spelling, font style, color, scale or position changes materially
+      - arrow logo missing, moved or redesigned
+      - rear graphic details missing when visible
+      - cropped, oversized, sleeveless or compression silhouette
+      - invented graphics, labels or seams
+
+  SR322RKL71-BLK0:
+    type: women_running_6in_pocket_leggings
+    color: black
+    silhouette: fitted_6_inch_running_tight
+    immutable:
+      - high wide waistband
+      - fitted six-inch running length
+      - side panel seam construction
+      - side pocket panel
+      - reflective dotted graphic pattern on outer thigh
+      - Descente arrow logo near lower outer leg
+      - smooth stretch technical fabric
+    hard_fail:
+      - rendered as loose woven shorts
+      - rendered shorter than reference into hot-pants / underwear length
+      - side pocket architecture missing in visible side view
+      - dotted reflective graphic missing in visible side view
+      - logo moves or changes materially
+      - invented trims, graphics or accessories
+
+  SR322UCP71-BRW0:
+    type: women_logo_ball_cap
+    color: muted_taupe_brown
+    silhouette: curved_brim_low_profile_cap
+    immutable:
+      front:
+        - embroidered cursive descente wordmark
+        - small lowercase tagline "design that moves"
+      rear:
+        - adjustable fabric strap
+        - metal buckle
+        - rear-right Descente arrow logo embroidery
+      construction:
+        - curved visor
+        - tonal eyelets
+        - tonal top button
+    hard_fail:
+      - front becomes icon-only
+      - front wordmark becomes block typography
+      - strap becomes plastic snapback
+      - rear logo disappears in a visible rear view
+      - color shifts to black, dark chocolate or beige-white
+      - invented branding
+
+runtime_rules:
+  canonical_product_images_required: true
+  garment_reference_images_must_be_attached_to_generation_job: true
+  text_prompt_must_not_be_the_only_product_source: true
+  generator_may_change:
+    - natural fabric wrinkles caused by pose
+    - lighting and shadow
+    - perspective caused by camera angle
+  generator_must_not_change:
+    - logo
+    - wordmark
+    - graphic placement
+    - colorway
+    - garment length
+    - silhouette
+    - seam architecture
+    - pocket architecture
+    - cap construction
+
+review_gate:
+  immutable_feature_error: FAIL
+  invented_product_detail: FAIL
+  uncertain_visibility: CHECK
