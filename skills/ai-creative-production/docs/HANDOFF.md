@@ -38,6 +38,8 @@ Brand / Model / SKU / Scene
         ↓
 Product Understanding
         ↓
+SKU USP Optimizer
+        ↓
 Styling Planner
         ↓
 Image Generator
@@ -64,19 +66,23 @@ Human Final Gate
 - Review 結果只允許 PASS / CHECK / FAIL。
 - Product Fidelity 重大錯誤直接 FAIL。
 - 自動 Review 後仍保留人工 Final Gate。
+- 採 USP-first：先確認商品賣點與證據，再決定場景、動作、構圖。
+- 採 Shot Grammar，不採固定五張模板。
+- Staff Styling 為 source content mode，可再分流成 Web / Meta 等 channel output。
 
 ---
 
-## 8 Skill Modules
+## 9 Skill Modules
 
 1. `product-understanding`
-2. `styling-planner`
-3. `image-generator`
-4. `quality-review`
-5. `channel-web`
-6. `channel-edm`
-7. `channel-line`
-8. `channel-ads`
+2. `sku-usp-optimizer`
+3. `styling-planner`
+4. `image-generator`
+5. `quality-review`
+6. `channel-web`
+7. `channel-edm`
+8. `channel-line`
+9. `channel-ads`
 
 每個 Skill 都有自己的 Purpose / Input / Output / Validation / Stop Rule。
 
@@ -87,6 +93,10 @@ Human Final Gate
 Model 的長期目的，是建立少量、固定、可重複使用的品牌虛擬 Model。
 
 Model 不只是外貌資產，也承擔 audience signal：讓目標客群對穿著效果產生自我投射。
+
+目前正式投入 MVP 的 approved model：
+
+- `DV1 / Naomi Lin`
 
 Model Card 至少描述：
 
@@ -120,18 +130,35 @@ Landing Page / SKU 進入系統後，Product Understanding 應盡量取得：
 
 如果資料不足，不可猜測不存在的商品細節。
 
-SKU 後續可延伸 Styling Plan 與多 Channel Output，但商品 source 不重複保存。
+SKU 後續可延伸 USP Brief、Styling Plan 與多 Channel Output，但商品 source 不重複保存。
+
+---
+
+## USP Direction
+
+`sku-usp-optimizer` 負責把已驗證商品事實轉成：
+
+- USP priority
+- evidence status
+- visual proof requirement
+- must-show details
+- reject conditions
+- channel-relevant visual signals
+
+任何未驗證 claim 不可進 production copy。
+
+每張母素材都必須回答：這張圖正在幫哪個 SKU 證明什麼？
 
 ---
 
 ## Styling Direction
 
-Styling Planner 負責把商品事實翻譯成：
+Styling Planner 負責把商品事實與 USP 翻譯成：
 
 - target / audience signal
 - hero feature
 - must-show detail
-- shot list
+- dynamic shot plan
 - pose / framing
 - scene direction
 - complementary item direction
@@ -145,78 +172,93 @@ Styling 建議是 recommendation，不可反向覆寫 Product Fact。
 至少包含：
 
 1. Product Fidelity
-2. Model Consistency
-3. Styling Relevance
-4. Scene / Composition
-5. Channel Compliance
+2. USP Visibility
+3. Model Consistency
+4. Human Realism / Anatomy
+5. Styling Relevance
+6. Scene / Composition
+7. Channel Compliance
 
-Logo、顏色、圖案、剪裁、版型等重大錯誤不可用平均分補救。
-
----
-
-## Build Plan
-
-完整建立分 6 步：
-
-1. Repository Foundation
-2. Core Asset Contracts
-3. Skill Contracts
-4. Workflow Orchestration
-5. Eval / Review System
-6. Real MVP Test
-
-詳見 `docs/BUILD-PLAN.md`。
+Logo、顏色、圖案、剪裁、版型、商品長度等重大錯誤不可用平均分補救。
 
 ---
 
-## Current Build Status — 2026-09-13
+## Current Build Status — 2026-09-15
 
 ### 已完成
 
 - Modular architecture 定義
-- 8 個 Skill contract
+- 9 個 Skill module，其中包含 `sku-usp-optimizer`
 - Core Asset 單一來源原則
 - Canonical workflow
 - Eval framework
 - Channel separation 原則
-- 第一個真實 MVP case 建立
-- 既有 ingestion / job / review_gate 骨架保留
+- Naomi / DV1 作為正式 MVP model
+- 第一個舊 MVP case 保留
+- 新 USP-first 真實 MVP case 已建立
+- 17 張商品參考圖已從 Drive 實際讀取並 review
+- 三個 SKU 的 Visual Lock 已建立
+- 三個 SKU 的 USP Brief 已建立
+- Dynamic Shot Plan 已建立
+- Web Staff Styling + Meta Ads 共用母素材再分流的 Mode C 已正式採用
 
-### Real MVP Case
+### Active Real MVP Case
 
-`mvp/cases/descente-sr123tts23-blu0/`
+`mvp/cases/descente-naomi-sr323rts77-sr322rkl71-sr322ucp71/`
 
-目前先驗證：
+Inputs:
 
 ```text
-Landing Page
-→ Product Understanding
-→ Styling Planner
-→ Job / Review-ready package
+Model: DV1 / Naomi Lin
+Top: SR323RTS77-BEG0
+Bottom: SR322RKL71-BLK0
+Cap: SR322UCP71-BRW0
 ```
 
-第一個 Channel baseline 採 `channel-web`。
+已通過：
+
+```text
+Drive source assets
+→ Product visual inspection
+→ Visual Lock
+→ USP Brief
+→ Dynamic Shot Plan
+```
+
+母素材規劃為 M01–M06，再分流：
+
+```text
+Approved Mother Assets
+├── Web Staff Styling
+└── Meta Ads 4:5 / 9:16
+```
+
+### Active Visual Locks
+
+- `SR323RTS77-BEG0`: light-beige regular-fit technical tee; red chest wordmark, black opposite-shoulder arrow, rear segmented marks, micro technical texture.
+- `SR322RKL71-BLK0`: black women’s 6-inch running pocket leggings; wide waistband, fitted mid-thigh length, side pocket/panel seams, reflective dot graphics, lower outer-leg arrow logo.
+- `SR322UCP71-BRW0`: muted taupe-brown curved-brim cap; cursive front `descente`, small `design that moves`, fabric rear strap + metal buckle, rear-side arrow logo.
+
+### 下一個執行 Gate
+
+1. Generation proof with Naomi / DV1 and the locked 3-SKU outfit
+2. Shot-level Quality Review
+3. Look-level consistency review
+4. Approved mother-asset selection
+5. Web Staff Styling derivative
+6. Meta 4:5 / 9:16 derivative
 
 ### 尚未完成
 
-- 正式 Brand Profile schema 完整化
-- 正式 approved Model Card / reference set
-- SKU / Styling schema 升級
-- 真實 runtime ingestion regression test
-- Image Generation engine 選型與 first proof
-- 視覺 Product Fidelity 自動 QA
-- Channel-specific export automation
+- Generation stability regression across repeated runs
+- Automated visual Product Fidelity QA
+- Automated channel export
+- Final operating Web UI / Dashboard
 
 ---
 
-## Next Canonical Task
+## Current Canonical Rule
 
-優先完成 Step 2 / Step 5 的可執行資料契約：
+不要跳過商品 source、Visual Lock、USP Evidence 或 Model approval，就直接生成 production evidence。
 
-1. 升級 Brand Profile / Model Card / Product Asset / Styling Plan schemas
-2. 對 Real MVP Case 產出第一份 `product.yaml`
-3. 產出第一份 `styling-plan.yaml`
-4. 建立對應 eval checklist
-5. 等 approved Model Card 後再進 Image Generation
-
-不要跳過商品 source 與 Model approval，直接用隨機人物生成 production evidence。
+在 Active MVP 中，這四個前置條件目前均已具備，因此下一步應直接進 Generation proof，而不是重新討論架構。
