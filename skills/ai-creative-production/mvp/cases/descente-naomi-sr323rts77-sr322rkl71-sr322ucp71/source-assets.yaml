@@ -1,0 +1,32 @@
+case_id: descente-naomi-sr323rts77-sr322rkl71-sr322ucp71
+brand: DESCENTE
+model:
+  id: DV1
+  name: Naomi Lin
+mode: C
+outputs:
+  - web_staff_styling
+  - meta_ads
+source_lp:
+  top: https://descente.tw/products/descente-women-t-shirt-sr323rts77-beg0
+  shorts: https://descente.tw/products/descente-women-shorts-sr322rkl71-blk0
+  cap: https://descente.tw/products/descente-women-cap-sr322ucp71-brw0
+source_drive:
+  root: https://drive.google.com/drive/folders/1nkfjFpPBhcU3KSXGpCa3u6K3Qr7ZJUIc
+  folders:
+    SR323RTS77-BEG0:
+      image_count: 7
+      status: inspected
+    SR322RKL71-BLK0:
+      image_count: 5
+      status: inspected
+    SR322UCP71-BRW0:
+      image_count: 5
+      status: inspected
+asset_status:
+  total_images: 17
+  materialized_and_visually_reviewed: true
+  product_visual_lock_ready: true
+notes:
+  - Product images were visually inspected before planning generation.
+  - Unverified marketing claims must not be promoted to production copy.
