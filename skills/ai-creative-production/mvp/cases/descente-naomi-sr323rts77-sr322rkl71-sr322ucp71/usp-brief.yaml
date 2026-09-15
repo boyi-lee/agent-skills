@@ -1,0 +1,88 @@
+case_id: descente-naomi-sr323rts77-sr322rkl71-sr322ucp71
+strategy: usp_first
+products:
+  SR323RTS77-BEG0:
+    verified_facts:
+      - quick-dry performance tee
+      - polyester 94 / polyurethane 6
+      - regular fit
+      - lightweight technical construction
+      - micro air-hole structure visible in supplied product imagery
+    claims_policy:
+      approved:
+        - quick dry
+        - lightweight
+        - regular fit
+        - technical breathable-looking mesh structure
+      evidence_limited:
+        - '30% lighter than cotton tee'
+        - '2x faster sweat release'
+      rule: evidence_limited claims require Taiwan-LP confirmation before ad copy use
+    usp_priority:
+      - id: tee_quick_dry
+        message: 運動時維持乾爽感的 Quick Dry 上衣
+        visual_proof:
+          - post-warmup close/medium shot with believable light perspiration but tee not soaked
+          - movement shot showing fabric staying light and mobile
+      - id: tee_light_regular_fit
+        message: 輕量、俐落但不緊繃的 Regular Fit
+        visual_proof:
+          - front and 45-degree torso views with natural drape
+      - id: tee_technical_detail
+        message: 技術感來自面料與前後辨識細節
+        visual_proof:
+          - macro/close crop showing micro texture and chest/shoulder marks
+  SR322RKL71-BLK0:
+    verified_facts:
+      - women running 6-inch pocket leggings
+      - high-stretch technical fabric
+      - reflective details
+      - moisture-wicking / quick-dry positioning
+      - side pocket construction
+      - regular fit running-tight geometry
+      - length reference: total side length 46/47/48 cm for S/M/L in Korean official listing
+    usp_priority:
+      - id: shorts_running_mobility
+        message: 6 吋跑步緊身褲，支撐活動又不妨礙步幅
+        visual_proof:
+          - walking/running-prep stride
+          - side view showing true 6-inch leg coverage
+      - id: shorts_storage
+        message: 側邊口袋讓跑步小物有位置
+        visual_proof:
+          - natural phone/card placement or hand checking side pocket without hiding garment architecture
+      - id: shorts_reflective
+        message: 外側反光點狀細節是跑步辨識特徵
+        visual_proof:
+          - 45-degree side close shot where dotted graphic is readable
+  SR322UCP71-BRW0:
+    verified_facts:
+      - muted taupe-brown ball cap
+      - cursive descente front embroidery
+      - 'design that moves' small front tagline
+      - adjustable fabric strap with metal buckle
+      - rear-side Descente arrow embroidery
+    claims_policy:
+      approved:
+        - styling / identity / adjustable-fit visual facts only
+      unverified:
+        - UV protection
+        - moisture management
+        - performance fabric claims
+    usp_priority:
+      - id: cap_styling_identity
+        message: 低彩度棕色與手寫字樣，讓跑步穿搭不只剩機能感
+        visual_proof:
+          - front 3/4 portrait with embroidery readable
+      - id: cap_detail
+        message: 前後都有辨識細節
+        visual_proof:
+          - rear/3-quarter detail showing buckle and rear arrow logo
+look_level_usp:
+  primary: 城市女性跑步穿搭，同時兼顧 Quick Dry、跑步活動性與完整造型辨識
+  audience_signal: 24-35 urban active women who want running function without looking like race-only gear
+  visual_story:
+    - prep
+    - move
+    - recover
+    - detail
