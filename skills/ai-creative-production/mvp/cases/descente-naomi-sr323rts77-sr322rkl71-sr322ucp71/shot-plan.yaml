@@ -1,0 +1,116 @@
+case_id: descente-naomi-sr323rts77-sr322rkl71-sr322ucp71
+planner_mode: dynamic_shot_grammar
+model: DV1 Naomi Lin
+scene_family:
+  primary: urban_riverside_running
+  secondary: clean_city_walkway
+  reason: supports running function while preserving everyday styling context
+rules:
+  - no fixed five-shot template
+  - every shot must declare purpose and usp_to_show
+  - at least 60 percent of pose/composition choices must differ from the previous approved look set
+  - product fidelity outranks atmosphere
+  - avoid generic standing-smile repetition
+  - preserve realistic athletic female leg/glute tone without exaggeration
+mother_asset_shots:
+  - shot_id: M01
+    purpose: establish complete outfit and Staff Styling identity
+    usp_to_show:
+      - tee_light_regular_fit
+      - shorts_running_mobility
+      - cap_styling_identity
+    framing: full_body_3_4
+    action: natural pre-run standing while checking surroundings, one foot slightly forward
+    expression: relaxed alert half-smile, not posed advertising grin
+    must_show:
+      - full 6-inch shorts length
+      - cap front embroidery
+      - tee chest wordmark and shoulder mark when angle allows
+  - shot_id: M02
+    purpose: prove running mobility and shorts construction
+    usp_to_show:
+      - shorts_running_mobility
+      - shorts_reflective
+    framing: full_body_side_or_45
+    action: dynamic warm-up lunge or controlled high-knee preparation
+    must_show:
+      - side seam
+      - side pocket panel
+      - reflective dotted graphic
+      - shorts hem must remain 6-inch running-tight length
+  - shot_id: M03
+    purpose: prove tee quick-dry/lightweight story
+    usp_to_show:
+      - tee_quick_dry
+      - tee_light_regular_fit
+    framing: medium_waist_up
+    action: post-warmup pause, adjusting cap brim or ponytail
+    realism:
+      - subtle perspiration at temples/neck
+      - tee remains visually light rather than drenched
+      - visible pores and believable skin texture
+    must_show:
+      - red chest DESCENTE wordmark
+      - technical fabric drape
+  - shot_id: M04
+    purpose: show storage USP in a real use action
+    usp_to_show:
+      - shorts_storage
+    framing: hip_to_knee_detail
+    action: placing or removing a slim phone/card from side pocket
+    must_show:
+      - pocket opening and seam architecture
+      - reflective detail where visible
+      - no invented zipper if source imagery does not show one
+  - shot_id: M05
+    purpose: show cap identity details without turning image into catalog still life
+    usp_to_show:
+      - cap_styling_identity
+      - cap_detail
+    framing: portrait_3_4_rear
+    action: Naomi turns back naturally after a short jog, hand briefly touching cap
+    must_show:
+      - rear metal buckle strap
+      - rear-side arrow logo
+      - front cursive embroidery partially or fully readable depending angle
+  - shot_id: M06
+    purpose: Staff Styling candid lifestyle proof
+    usp_to_show:
+      - tee_light_regular_fit
+      - shorts_running_mobility
+      - cap_styling_identity
+    framing: full_body_environmental
+    action: walking after run with water bottle, relaxed asymmetrical posture
+    expression: candid breathing/recovery expression, no frozen smile
+channel_derivatives:
+  web_staff_styling:
+    preferred_shots: [M01, M02, M03, M05, M06]
+    treatment:
+      - preserve more environment and full outfit proportion
+      - attach short styling note explaining why beige tee + black 6-inch tights + muted brown cap work together
+      - no promotional text baked into source image
+  meta_ads:
+    preferred_shots: [M02, M03, M04, M01]
+    crops:
+      - 4:5
+      - 9:16
+    signal_priority:
+      - movement
+      - visible product architecture
+      - USP-readable detail
+    constraints:
+      - do not hide product details with oversized copy blocks
+      - each derivative should focus on one primary USP rather than all claims at once
+quality_gate:
+  shot_level:
+    - sku_fidelity
+    - usp_visibility
+    - model_identity
+    - human_realism
+    - anatomy
+    - scene_logic
+  look_level:
+    - same outfit across all mother assets
+    - adequate shot diversity
+    - at least one clear proof shot per primary SKU USP
+    - reject if images are merely attractive but product advantage is unreadable
