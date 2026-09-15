@@ -1,0 +1,66 @@
+model_id: descente-sport-model-01
+locked_version: DV1
+status: active
+purpose: "Keep Naomi visually consistent across every generation job."
+
+reference_policy:
+  identity_reference_required: true
+  minimum_reference_images_per_job: 3
+  preferred_reference_views:
+    - front
+    - three_quarter
+    - full_body
+  text_description_only_is_not_sufficient: true
+
+identity_lock:
+  face:
+    impression: refined-natural-east-asian
+    shape: elongated-oval
+    skin: natural-real-texture
+    eyes: dark-brown
+    expression_range:
+      - neutral-natural
+      - soft-smile
+      - candid-open-smile
+    reject:
+      - plastic_skin
+      - beauty-filter_face
+      - influencer_face
+      - westernized_feature_drift
+      - exaggerated_v_shape
+  hair:
+    color_family:
+      - dark-brown
+      - black
+    allowed:
+      - ponytail
+      - low-ponytail
+      - natural-straight
+      - loose-active-hair
+  body:
+    height_impression_cm: 168-170
+    build: slim-athletic
+    muscle_definition:
+      legs: subtle-athletic
+      glutes: natural-trained
+      calves: visible-but-not-bodybuilder
+    proportions: long-line-balanced
+    reject:
+      - bodybuilding_build
+      - fashion-doll_proportions
+      - excessive_thinness
+      - body_shape_drift_that_changes_garment_fit
+
+consistency_gate:
+  hard_fail:
+    - face_identity_drift
+    - body_proportion_drift
+    - skin_looks_synthetic
+    - identity_reference_not_supplied
+  note: "Pose, scene, hairstyle arrangement and expression may vary; identity may not."
+
+source_reference_boundary:
+  policy: inspiration_only_distinct_virtual_identity
+  do_not:
+    - replicate_a_real_person_exactly
+    - claim_the_virtual_model_is_the_reference_person
