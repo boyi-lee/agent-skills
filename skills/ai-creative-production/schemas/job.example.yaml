@@ -1,29 +1,62 @@
-job_id: 20260913-descente-sku-model-a-daan
+job_id: 20260915-descente-naomi-style-01
 status: draft
-workflow_version: 0.1.0
+workflow_version: 0.2.0
 
 inputs:
-  model_id: model-a
-  scene_id: daan-forest-park
+  model_id: descente-sport-model-01
+  model_version: DV1
   brand_id: descente
-  landing_page_url: https://example.com/product
-  sku: null
+  scene_id: null
+  landing_page_url: null
+  sku_set: []
+  garment_lock_ref: null
+  identity_lock_ref: core-assets/models/descente-sport-model-01/identity-lock.yaml
 
-output:
-  ratios:
-    - "4:5"
-    - "9:16"
-  candidate_count_per_ratio: 4
+output_contract:
+  image_count: 1
+  aspect_ratio: "4:5"
+  collage: false
+  contact_sheet: false
+  text_overlay: false
+  one_person_only: true
+  one_scene_only: true
+  allow_unlisted_objects: false
+  filename: style-01.webp
+
+scene_objects:
+  allowed: []
+  required: []
+  forbidden:
+    - bottle
+    - bag
+    - towel
+    - phone
+    - headphones
+    - watch
+    - extra_clothing
+    - unlisted_accessory
 
 trace:
-  model_version: null
+  model_version: DV1
   scene_version: null
   product_asset_version: null
+  garment_lock_version: null
   created_at: null
 
 review:
+  garment_lock: pending
+  identity_lock: pending
+  hallucination_check: pending
   product_fidelity: pending
   model_consistency: pending
   creative_quality: pending
   decision: pending
   human_final_gate: pending
+
+hard_stop:
+  - output_image_count_not_equal_1
+  - collage_or_multi_panel_generated
+  - more_than_one_person_generated
+  - unlisted_object_generated
+  - garment_lock_missing
+  - identity_lock_missing
