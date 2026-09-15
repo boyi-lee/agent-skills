@@ -1,0 +1,72 @@
+case_id: descente-naomi-sr323rts77-sr322rkl71-sr322ucp71
+visual_lock_version: 1
+status: ready
+products:
+  SR323RTS77-BEG0:
+    type: short_sleeve_performance_tee
+    color: light_beige
+    silhouette: regular_fit
+    must_preserve:
+      - crew neck
+      - short sleeves
+      - light beige body color
+      - red DESCENTE wordmark on wearer-left chest
+      - black Descente arrow logo near wearer-right shoulder
+      - small circular segmented mark near rear upper shoulder
+      - vertical segmented reflective-style mark at lower back
+      - fine micro-mesh / air-hole fabric texture
+      - straight regular-fit hem length
+    reject_if:
+      - chest branding moved, recolored, enlarged or removed
+      - shoulder logo disappears
+      - rear marks disappear in views where they should be visible
+      - tee becomes cropped, oversized, sleeveless or tight compression fit
+      - fabric becomes cotton-heavy or opaque smooth jersey with no technical texture
+  SR322RKL71-BLK0:
+    type: women_running_6in_pocket_leggings
+    color: black
+    silhouette: fitted_6_inch_running_tight
+    must_preserve:
+      - high wide waistband
+      - fitted biker-short / running-legging silhouette
+      - approximately 6-inch functional running length, clearly longer than hot pants
+      - side panel seam construction
+      - side pocket panel
+      - reflective dotted graphic pattern on outer thigh
+      - Descente arrow logo near lower outer leg
+      - smooth stretch technical fabric
+    reject_if:
+      - rendered as loose woven shorts
+      - hem becomes very short or underwear-like
+      - reflective dotted graphics disappear in visible side views
+      - side pocket/seam architecture disappears
+      - logo position changes materially
+  SR322UCP71-BRW0:
+    type: women_logo_ball_cap
+    color: muted_taupe_brown
+    silhouette: curved_brim_low_profile_cap
+    must_preserve:
+      - muted taupe-brown washed fabric appearance
+      - curved visor
+      - embroidered cursive descente wordmark at front
+      - small lowercase tagline 'design that moves' beneath front wordmark
+      - adjustable rear fabric strap with metal buckle
+      - rear-right Descente arrow logo embroidery
+      - tonal eyelets and top button
+    reject_if:
+      - front becomes icon-only logo
+      - wordmark changes to block typography
+      - rear buckle/strap becomes plastic snapback
+      - rear logo disappears in rear or 3/4 rear view
+      - color shifts to dark chocolate, black or beige-white
+look_level_lock:
+  model: DV1 Naomi Lin
+  outfit:
+    - SR323RTS77-BEG0
+    - SR322RKL71-BLK0
+    - SR322UCP71-BRW0
+  consistency_rules:
+    - same model identity across the look set
+    - same SKU colorways across all shots
+    - body must read as an active woman with natural leg/glute muscle tone, not bodybuilder exaggeration
+    - expressions should feel candid and human, not frozen fashion-smile
